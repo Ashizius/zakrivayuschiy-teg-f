@@ -1,1 +1,30 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+:root {
+  /*цвета*/
+  --bg-color:     #fff; /* var(--bg-color, #fff) */
+  --main-color:   #000; /* var(--main-color, #000) */
+  --accent-color: #fff; /* var(--accent-color, #fff) */
+  --effect-color: #f00; /* var(--effect-color, #f00) */
+  --text-color:   var(--main-color, #000);
+  --border-color: var(--main-color, #000);
+  --bg-image: url(../images/background-light.png);
+  --bg-gradient: 180deg, #E7E7E7 0%, #1A1A1A 100%;
+/*геометрия страницы*/
+  --common-gap: 25px;
+  --medium-gap:   calc(2 * var(--common-gap));
+  --big-gap:   calc(4 * var(--common-gap));
+  --border-size: 2px;
+  --border-setup: var(--border-size) solid var(--border-color);
+  --page-size: clamp(375px, 260.5632px + 30.5164vw, 1440px);
+/*шрифты*/
+  --main-font: Inter;
+  --accent-font: 'Press Start 2P';
+  --main-title-font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+  --secondary-title-font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+  /*--main-title-font-size: max(3.0625rem, 2.7104rem + 1.5023vw);*/
+  /*--page-size: clamp(375px, 260.5632px + 30.5164vw, 700px);*/
+  --text-font-size:   1.125rem;
+  --accent-font-size: 0.875rem;
+  /*временные параметры*/
+  --base-time: 1s;
+}

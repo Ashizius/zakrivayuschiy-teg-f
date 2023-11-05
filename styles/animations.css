@@ -12,3 +12,156 @@
 
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
 */
+
+.content__buttons {
+  --icon-time: calc(var(--base-time, 1s) * 0.3); /*2 элемента анимации*/
+  --like-hover-time: calc(var(--base-time, 1s) * 0.5);
+}
+
+
+.card__icon-button .heart-core {
+  opacity: 0;
+  transition: opacity var(--icon-time, 0.3s) calc(var(--icon-time, 0.3s) * 0.1),
+              fill calc(var(--icon-time, 0.3s) / 2 * 10) calc(var(--icon-time, 0.3s) * 0.1),
+              stroke calc(var(--icon-time, 0.3s) / 2 * 1) calc(var(--icon-time, 0.3s) * 0.1);
+}
+
+.card__icon-button .heart-body{
+  opacity: 0;
+  transition: opacity var(--icon-time, 0.3s) calc(var(--icon-time, 0.3s) * 0.1),
+              fill calc(var(--icon-time, 0.3s) / 2 * 200) calc(var(--icon-time, 0.3s) * 0.1),
+              stroke calc(var(--icon-time, 0.3s) / 2 * 200) calc(var(--icon-time, 0.3s) * 0.1);
+}
+
+.card__icon-button:hover .heart-core{
+  opacity: 1;
+  transition: opacity calc(var(--icon-time, 0.3s) / 2 * 1);
+}
+
+.card__icon-button:hover .heart-body{
+  opacity: 1;
+  transition: opacity calc(var(--icon-time, 0.3s) / 2 * 2);
+}
+
+.card__icon-button:active .heart-core{
+  fill: var(--effect-color, #f00);
+  stroke: var(--effect-color, #f00);
+  opacity: 1;
+  transition: fill calc(var(--icon-time, 0.3s) / 2 * 1),
+              stroke calc(var(--icon-time, 0.3s) / 2 * 1);
+}
+
+.card__icon-button:active .heart-body{
+  fill: var(--effect-color, #f00);
+  stroke: var(--effect-color, #f00);
+  opacity: 1;
+  transition: fill calc(var(--icon-time, 0.3s) / 2 * 2),
+              stroke calc(var(--icon-time, 0.3s) / 2 * 2);
+}
+
+@keyframes Xtransition {
+  from {
+    transform: translateX(-3px);
+  }
+
+  to {
+    transform: translateX(3px);
+  }
+}
+
+/*
+@keyframes like-press {
+  from {
+
+  }
+
+  20%{
+
+  }
+
+  40%{
+
+  }
+
+  60%{
+
+  }
+
+  80%{
+
+  }
+
+  to {
+
+  }
+}
+
+@keyframes like-press-hover {
+  from {
+
+  }
+
+  20%{
+
+  }
+
+  40%{
+
+  }
+
+  60%{
+
+  }
+
+  80%{
+
+  }
+
+  to {
+
+  }
+}
+
+@keyframes like-hover {
+  from {
+
+  }
+
+  50%{
+
+  }
+
+  to {
+
+  }
+}
+
+@keyframes like-active {
+  from {
+
+  }
+
+  50%{
+
+  }
+
+  to {
+
+  }
+}
+
+*/
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-menu__button {
+    transition:none;
+  }
+
+  .theme-menu__button::before {
+    transition:none;
+  }
+
+  .theme-menu__button:disabled::before{
+    animation: none;
+  }
+}
