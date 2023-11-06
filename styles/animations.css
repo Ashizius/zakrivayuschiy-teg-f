@@ -13,89 +13,177 @@
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
 */
 
-.content__buttons {
-  --icon-time: calc(var(--base-time, 1s) * 0.3); /*2 элемента анимации*/
-  --like-hover-time: calc(var(--base-time, 1s) * 0.5);
+
+/* анимации меню*/
+
+.theme-menu__button:disabled {
+  transition: opacity var(--button-animation-time, 1s);
 }
 
-
-.card__icon-button .heart-core {
-  opacity: 0;
-  transition: opacity var(--icon-time, 0.3s) calc(var(--icon-time, 0.3s) * 0.1),
-              fill calc(var(--icon-time, 0.3s) / 2 * 10) calc(var(--icon-time, 0.3s) * 0.1),
-              stroke calc(var(--icon-time, 0.3s) / 2 * 1) calc(var(--icon-time, 0.3s) * 0.1);
+.theme-menu__button:disabled::before {
+  transition: opacity var(--button-animation-time, 1s) ease-out, rotate var(--button-animation-time, 1s) linear;
+  animation: Xtransition calc(var(--base-time, 1s) * 2.2) infinite ease-in-out;
+  animation-direction: alternate;
 }
 
-.card__icon-button .heart-body{
-  opacity: 0;
-  transition: opacity var(--icon-time, 0.3s) calc(var(--icon-time, 0.3s) * 0.1),
-              fill calc(var(--icon-time, 0.3s) / 2 * 200) calc(var(--icon-time, 0.3s) * 0.1),
-              stroke calc(var(--icon-time, 0.3s) / 2 * 200) calc(var(--icon-time, 0.3s) * 0.1);
-}
-
-.card__icon-button:hover .heart-core{
-  opacity: 1;
-  transition: opacity calc(var(--icon-time, 0.3s) / 2 * 1);
-}
-
-.card__icon-button:hover .heart-body{
-  opacity: 1;
-  transition: opacity calc(var(--icon-time, 0.3s) / 2 * 2);
-}
-
-.card__icon-button:active .heart-core{
-  fill: var(--effect-color, #f00);
-  stroke: var(--effect-color, #f00);
-  opacity: 1;
-  transition: fill calc(var(--icon-time, 0.3s) / 2 * 1),
-              stroke calc(var(--icon-time, 0.3s) / 2 * 1);
-}
-
-.card__icon-button:active .heart-body{
-  fill: var(--effect-color, #f00);
-  stroke: var(--effect-color, #f00);
-  opacity: 1;
-  transition: fill calc(var(--icon-time, 0.3s) / 2 * 2),
-              stroke calc(var(--icon-time, 0.3s) / 2 * 2);
+.theme-menu__button::after {
+  transition: opacity var(--button-animation-time, 1s) ease-in-out, scale var(--button-animation-time, 1s) ease-in-out;
 }
 
 @keyframes Xtransition {
   from {
-    transform: translateX(-3px);
+    transform: translateX(-2px);
   }
 
   to {
-    transform: translateX(3px);
+    transform: translateX(2px);
+  }
+}
+
+.theme-menu__button:focus {
+  opacity: 0.6;
+  outline: none;
+}
+
+.theme-menu__button:focus::after {
+  opacity: 1;
+  scale: 1;
+}
+
+@supports selector(:focus-visible) {
+  .theme-menu__button:focus {
+    outline: none;
+    opacity: 0.6;
+  }
+  .theme-menu__button:focus::after {
+    opacity: 0;
+  }
+
+  .theme-menu__button:focus-visible {
+    opacity: 0.6;
+  }
+
+  .theme-menu__button:focus-visible::after {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+/* анимации карточек*/
+
+
+/*анимация к исходному*/
+.card__icon-button .heart-core {
+  transition: opacity calc(var(--icon-time, 0.3s)) calc(var(--icon-time, 0.3s) * 0.1),
+              fill calc(var(--icon-time, 0.3s)) calc(var(--icon-time, 0.3s) * 0.1);
+}
+
+.card__icon-button .heart-body{
+  transition: opacity calc(var(--icon-time, 0.3s)),
+              fill calc(var(--icon-time, 0.3s));
+}
+
+.card__icon-button .heart-contour {
+  transition: fill calc(var(--icon-time, 0.3s) / 3) linear;
+}
+
+/*анимация ховера и клика*/
+.card__icon-button:hover .heart-core {
+  transition: opacity calc(var(--icon-time, 0.3s));
+}
+
+.card__icon-button:hover .heart-body {
+  transition: opacity calc(var(--icon-time, 0.3s)) calc(var(--icon-time, 0.3s) * 0.17);
+}
+
+.card__icon-button:active .heart-core {
+  transition: fill calc(var(--icon-time, 0.3s));
+}
+
+.card__icon-button:active .heart-body {
+  transition: fill calc(var(--icon-time, 0.3s)) calc(var(--icon-time, 0.3s) * 0.17);
+}
+
+/* анимации лайка по нажатию*/
+:not(.card__icon-button:hover) .is-liked .heart-core { /*кадр 1: 0s -- 0.3s*/
+  transition-property: opacity;
+  transition-duration: calc(var(--icon-time, 0.3s) * 1);
+  transition-delay: 0;
+}
+
+:not(.card__icon-button:hover) .is-liked .heart-body { /*кадр 2: 0.051s -- 0.351s*/
+  transition-property: opacity;
+  transition-duration: calc(var(--icon-time, 0.3s));
+  transition-delay: calc(var(--icon-time, 0.3s) * 0.17);
+  /*transition: opacity calc(var(--icon-time, 0.3s)) calc(var(--icon-time, 0.3s) * 0.17),
+              fill calc(var(--icon-time, 0.3s)) calc(var(--icon-time, 0.3s) * 0.17);*/
+}
+
+.card__icon-button:hover .is-liked .heart-core { /*кадр 1: 0s -- 0.3s*/
+  transition-property: fill;
+  transition-duration: calc(var(--icon-time, 0.3s) * 1);
+  transition-delay: 0;
+}
+
+.card__icon-button:hover .is-liked .heart-body { /*кадр 2: 0.051s -- 0.351s*/
+  transition-property: fill;
+  transition-duration: calc(var(--icon-time, 0.3s));
+  transition-delay: calc(var(--icon-time, 0.3s) * 0.17);
+  /*transition: opacity calc(var(--icon-time, 0.3s)) calc(var(--icon-time, 0.3s) * 0.17),
+              fill calc(var(--icon-time, 0.3s)) calc(var(--icon-time, 0.3s) * 0.17);*/
+}
+
+.is-liked .heart-contour { /*кадр 3: 0s -- 0,1s*/
+  transition-property: fill;
+  transition-duration: calc(var(--icon-time, 0.3s) / 3);
+  transition-delay: 0;
+  /*  transition: fill calc(var(--icon-time, 0.3s) * 1) calc(var(--icon-time, 0.3s) * 0.17);*/
+}
+
+.is-liked .heart-contour,
+.is-liked .heart-body,
+.is-liked .heart-core { /*кадр 4: 0.1s -- 0.4s*/
+  animation: like-grow calc(var(--icon-time, 0.3s) / 2) 2 alternate calc(var(--icon-time, 0.3s) / 3);
+}
+
+.is-liked .heart-sparks { /*кадр 5: 0.2s -- 0.5s*/
+  animation: like-sparks calc(var(--icon-time, 0.3s) / 2) 2 alternate calc(var(--icon-time, 0.3s) / 3 * 2);
+}
+
+@keyframes like-grow {
+  from {
+    scale: 100%;
+  }
+
+  to {
+    scale: 125%;
+  }
+}
+
+@keyframes like-sparks {
+  from {
+    fill: var(--effect-color, #f00);
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
 
 /*
-@keyframes like-press {
-  from {
-
-  }
-
-  20%{
-
-  }
-
-  40%{
-
-  }
-
-  60%{
-
-  }
-
-  80%{
-
-  }
-
-  to {
-
-  }
+.is-liked .heart-core,
+.is-liked .heart-body {
+  animation-name: like-press;
 }
 
+.is-liked .heart-contour {
+  animation-name: like-press;
+}
+*/
+
+
+/*
 @keyframes like-press-hover {
   from {
 

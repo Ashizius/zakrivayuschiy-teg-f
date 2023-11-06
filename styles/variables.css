@@ -26,5 +26,9 @@
   --text-font-size:   1.125rem;
   --accent-font-size: 0.875rem;
   /*временные параметры*/
-  --base-time: 1s;
+  --base-time: 10s;
+}
+
+.content__buttons {
+  --icon-time: var(--base-time, 1s) * 0.3;
 }
