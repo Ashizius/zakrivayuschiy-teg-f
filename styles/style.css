@@ -14,8 +14,10 @@
 
 */
 
+
 .page {
-  min-inline-size: 320px;
+  width: 375px;
+  /*min-inline-size: 320px;*/
   min-block-size: 100dvb;
   margin-inline: auto;
   color: var(--text-color, #000);
@@ -29,8 +31,7 @@
 }
 
 .header {
-  /*padding-block-start: clamp(120px, 114.3664px + 1.5023vi, 136px);*/
-  padding-block-start: max(120px, 114.3664px + 1.5023vi);
+  padding-block-start: calc(114.3664px + 1.5023vi);
   padding-block-end: var(--common-gap, 25px);
   margin-block: var(--big-gap, 100px);
   border: var(--border-setup, solid);
@@ -224,6 +225,8 @@
 
 .content__buttons {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   inline-size: fit-content;
   gap: calc(var(--common-gap, 25px) / 2 - 7px);
@@ -294,6 +297,7 @@
   fill: var(--effect-color, #f00);
 }
 
+
 .common-button {
   position: relative;
   display: block;
@@ -308,28 +312,12 @@
   padding: 0;
 }
 
-.card__like-button {
-  padding-inline: calc(var(--common-gap, 25px) * 0.92 - 2px);
-  padding-block: calc(var(--common-gap, 25px) * 0.508 - 2px);
-  min-inline-size: calc(6em + var(--common-gap, 25px) * 1.85);
-}
-
-.common-button:focus {
-  outline:none;
-  translate: -2px -2px;
-  box-shadow: 2px 2px 0 0 var(--main-color, #000);
-}
-
-.button__text {
-  text-align: center;
-}
-
 .common-button::after {
   content: '';
   display: block;
   position: absolute;
   inset: 0;
-  background-color: var(--bg-color, #fff);
+  background-color: var(--inverse-color, #fff);
   scale: 0 1;
   transform-origin: 0;
   mix-blend-mode: difference;
@@ -337,6 +325,12 @@
 
 .common-button:hover::after {
   scale: 1 1;
+}
+
+.common-button:focus {
+  outline:none;
+  translate: -2px -2px;
+  box-shadow: 2px 2px 0 0 var(--main-color, #000);
 }
 
 @supports selector(:focus-visible) {
@@ -351,6 +345,16 @@
     translate: -2px -2px;
     box-shadow: 2px 2px 0 0 var(--main-color, #000);
   }
+}
+
+.card__like-button {
+  padding-inline: calc(var(--common-gap, 25px) * 0.92 - 2px);
+  padding-block: calc(var(--common-gap, 25px) * 0.508 - 2px);
+  min-inline-size: calc(6em + var(--common-gap, 25px) * 1.85);
+}
+
+.button__text {
+  text-align: center;
 }
 
 .footer {
@@ -422,4 +426,20 @@ dialog::backdrop {
   grid-area: button;
   inline-size: 100%;
   min-block-size: 38px;
+}
+
+@media (width < 375px) {
+:root {
+  --main-title-font-size: clamp(0.625rem, 0.625rem + 6.4vi, 3.0625rem);
+  --secondary-title-font-size: clamp(0.3125rem, 0.3125rem + 2.4vi, 0.875rem);
+  --common-gap: 6vw;
+  --medium-gap:   calc(2 * var(--common-gap));
+  --big-gap:   calc(4 * var(--common-gap));
+  --page-size: 100%;
+  }
+
+  .footer{
+    padding-inline: max(0, var(--common-gap, 25px) - 9px);
+  }
+
 }

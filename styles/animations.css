@@ -95,8 +95,6 @@
 
 .card__icon-button :not(.is-liked) .heart-core {
   transition-delay: calc(var(--base-time, 1) * 0.03s), calc(var(--base-time, 1) * 0.03s);
-  /*transition: opacity calc(var(--icon-time, 0.3s) * 0.5) calc(var(--icon-time, 0.3s) * 0.1),
-              fill calc(var(--icon-time, 0.3s) * 0.5) calc(var(--icon-time, 0.3s) * 0.1);*/
 }
 
 .card__icon-button :not(.is-liked) .heart-body{

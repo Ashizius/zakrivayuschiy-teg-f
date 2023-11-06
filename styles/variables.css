@@ -4,6 +4,7 @@
   --bg-color:     #fff; /* var(--bg-color, #fff) */
   --main-color:   #000; /* var(--main-color, #000) */
   --accent-color: #fff; /* var(--accent-color, #fff) */
+  --inverse-color: #fff; /* var(--accent-color, #fff) */
   --effect-color: #f00; /* var(--effect-color, #f00) */
   --text-color:   var(--main-color, #000);
   --border-color: var(--main-color, #000);
@@ -13,8 +14,8 @@
               linear-gradient(180deg, #e7e7e7 0px 0.01%, #1a1a1a);
 /*геометрия страницы*/
   --common-gap: 25px;
-  --medium-gap:   calc(2 * var(--common-gap));
-  --big-gap:   calc(4 * var(--common-gap));
+  --medium-gap: calc(2 * var(--common-gap));
+  --big-gap:    calc(4 * var(--common-gap));
   --border-size: 2px;
   --border-setup: var(--border-size) solid var(--border-color);
   /*--page-size: clamp(375px, 260.5632px + 30.5164vw, 1440px);*/
