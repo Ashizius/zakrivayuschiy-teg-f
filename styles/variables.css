@@ -17,7 +17,8 @@
   --big-gap:   calc(4 * var(--common-gap));
   --border-size: 2px;
   --border-setup: var(--border-size) solid var(--border-color);
-  --page-size: clamp(375px, 260.5632px + 30.5164vw, 1440px);
+  /*--page-size: clamp(375px, 260.5632px + 30.5164vw, 1440px);*/
+  --page-size: calc(260.5632px + 30.5164vw);
 /*шрифты*/
   --font-normal: 400;
   --font-bold:  700;
@@ -26,15 +27,8 @@
   --main-title-font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
   --secondary-title-font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
   /*--main-title-font-size: max(3.0625rem, 2.7104rem + 1.5023vw);*/
-  /*--page-size: clamp(375px, 260.5632px + 30.5164vw, 700px);*/
   --text-font-size:   1.125rem;
   --accent-font-size: 0.875rem;
   /*временные параметры*/
-  --base-time: 10;
-  --button-animation-time: var(--base-time, 1) * 0.3;
-  --icon-time: var(--base-time, 1) * 0.3;
-}
-
-.content__buttons {
-
+  --base-time: 1;
 }

@@ -19,7 +19,7 @@
   min-block-size: 100dvb;
   margin-inline: auto;
   color: var(--text-color, #000);
-  background-color: var(---bg-color, #fff);
+  background-color: var(--bg-color, #fff);
   background-image: var(--bg-image, linear-gradient(180deg, #E7E7E7 0%, #1A1A1A 100%));
   background-size: cover;
   inline-size: var(--page-size, max(500px, 50%));
@@ -29,7 +29,8 @@
 }
 
 .header {
-  padding-block-start: clamp(120px, 114.3664px + 1.5023vw, 136px);
+  /*padding-block-start: clamp(120px, 114.3664px + 1.5023vi, 136px);*/
+  padding-block-start: max(120px, 114.3664px + 1.5023vi);
   padding-block-end: var(--common-gap, 25px);
   margin-block: var(--big-gap, 100px);
   border: var(--border-setup, solid);
@@ -41,15 +42,16 @@
 }
 
 .header__main-title {
-  font-size: var( --main-title-font-size, calc(2.7104rem + 1.5023vw));
+  font-size: var( --main-title-font-size, calc(2.7104rem + 1.5023vi));
   font-weight: inherit;
 }
 
 .header__secondary-title {
   display: block;
   padding-block-start: 20px;
-  padding-block-end: var(--common-gap, 25px);
-  font-size: var( --secondary-title-font-size, calc(0.6769rem + 0.8451vw));
+  padding-block-end: calc(var(--common-gap, 25px) - 2px);
+  font-size: var( --secondary-title-font-size, calc(0.6769rem + 0.8451vi));
+  font-weight: inherit;
 }
 
 .theme-menu {
@@ -62,38 +64,39 @@
 }
 
 .theme-menu__list {
-  /* */
   display: flex;
   flex-direction: column;
   gap: 14px;
+  inline-size: -moz-fit-content;
   inline-size: fit-content;
   margin: auto;
   text-align: start;
 }
 
 .theme-menu__item  {
-  /* */
+  font-size: 14px;
 }
 
 .theme-menu__button {
-  /* */
   position: relative;
+  inset-inline-start: 1em;
   font-size: var(--accent-font-size, 0.875rem);
   background-color: transparent;
   border: none;
   font-family: inherit;
   text-transform: inherit;
-  line-height: 100%;
   perspective: 100px;
   padding: 0;
+  margin: 0;
+  line-height: normal;
 }
 
 .theme-menu__button::before {
   position: absolute;
-  content:'';
-  opacity: 0;
-  inset-inline-start: -1em;
   inset-block-start: 0;
+  inset-inline-start: -1.5em;
+  content:'▶';
+  opacity: 0;
 }
 
 .theme-menu__button:disabled {
@@ -167,7 +170,7 @@
 }
 
 .content__card-title {
-  /* */
+  font-size: inherit;
   padding: 3.5px 10px;
   font-variation-settings: "wght" var(--font-bold, 700);
 }
@@ -207,7 +210,8 @@
   inline-size: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
-  object-position: center right;
+  object-position: 96% center;
+  filter: sepia();
 }
 
 .content__card-text {
@@ -222,13 +226,12 @@
   display: flex;
   align-items: center;
   inline-size: fit-content;
-  gap: calc(var(--common-gap, 25px) / 2);
+  gap: calc(var(--common-gap, 25px) / 2 - 7px);
   margin-block: 0 var(--common-gap, 25px);
   margin-inline: auto var(--common-gap, 25px);
 }
 
 .card__icon-button {
-  /* */
   display: block;
   inline-size: 41px;
   block-size: 38px;
@@ -351,13 +354,72 @@
 }
 
 .footer {
-  /* */
+  padding-block-end: var(--big-gap, 100px);
+  padding-block-start: var(--medium-gap, 50px);
+  padding-inline: calc(var(--common-gap, 25px) * 1.36);
 }
 
 .footer__button {
   /* */
+  display: flex;
+  padding-inline: calc(var(--common-gap, 25px) * 0.8);
+  padding-block:  calc(var(--common-gap, 25px) * 0.6);
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-inline: auto;
+  inline-size: fit-content;
 }
 
 .footer__image {
   /* */
+  block-size: 1.5em;
+  aspect-ratio: 1 / 1;
+}
+/*
+dialog {
+  position: fixed;
+  inset: 0;
+}*/
+
+dialog {
+  padding-block: calc(var(--common-gap, 25px) * 1.28);
+  padding-inline: clamp(var(--common-gap, 25px) * 1.28, 46.4px - 1vi, var(--common-gap, 25px) * 1.68);
+  background-color: inherit;
+  color: inherit;
+  inline-size: clamp(341px, (100vi - 357px + 17px * 2) * 10000, 357px);
+
+}
+
+dialog[open] {
+  display: grid;
+  grid-template-rows: fit-content, fit-content;
+  grid-template-columns: fit-content, min-content;
+  grid-template-areas:
+                        "image title  "
+                        "button button";
+  row-gap: calc(var(--common-gap, 25px) * 1.25);
+  column-gap: calc(var(--common-gap, 25px) * 0.8);
+}
+
+dialog::backdrop {
+  background-color: rgb(0 0 0 / 0.75);
+}
+
+.dialog__title {
+  grid-area: title;
+  font-weight: 400;
+}
+
+.dialog__image {
+  grid-area: image;
+  inline-size: 39px;
+  aspect-ratio: 1 / 1;
+}
+
+.dialog__button {
+  grid-area: button;
+  inline-size: 100%;
+  min-block-size: 38px;
 }

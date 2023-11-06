@@ -6,13 +6,28 @@
 */
 
 :root.theme-dark{
-  --bg-color:     #fff; /* var(--bg-color, #fff) */
-  --main-color:   #000; /* var(--main-color, #000) */
-  --accent-color: #fff; /* var(--accent-color, #fff) */
+  --bg-color:     #000; /* var(--bg-color, #fff) */
+  --main-color:   #00cc14; /* var(--main-color, #000) */
+  --accent-color: #000; /* var(--accent-color, #fff) */
   --effect-color: #f00; /* var(--effect-color, #f00) */
   --bg-image: repeating-linear-gradient(90deg, #000, #000 2px, transparent 2px 4px),
               repeating-linear-gradient(0deg, #000, #000 2px, transparent 2px 4px),
               linear-gradient(180deg, #007f0c 0px 0.01%, #004306);
   --font-normal: 465;
   --font-bold:  785;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  :root.theme-auto{
+    --bg-color:     #000; /* var(--bg-color, #fff) */
+    --main-color:   #00cc14; /* var(--main-color, #000) */
+    --accent-color: #000; /* var(--accent-color, #fff) */
+    --effect-color: #f00; /* var(--effect-color, #f00) */
+    --bg-image: repeating-linear-gradient(90deg, #000, #000 2px, transparent 2px 4px),
+                repeating-linear-gradient(0deg, #000, #000 2px, transparent 2px 4px),
+                linear-gradient(180deg, #007f0c 0px 0.01%, #004306);
+    --font-normal: 465;
+    --font-bold:  785;
+  }
 }

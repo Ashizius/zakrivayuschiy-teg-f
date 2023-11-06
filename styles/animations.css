@@ -22,26 +22,26 @@
 }
 
 .theme-menu__button:disabled {
-  transition: opacity var(--button-animation-time, 0.3s);
+  transition: opacity calc(var(--base-time, 1s) * 0.3s);
 }
 
 .theme-menu__button:disabled {
-  transition: opacity var(--button-animation-time, 0.3s);
+  transition: opacity calc(var(--base-time, 1s) * 0.3s);
 }
 
 .theme-menu__button:disabled::before {
-  transition: opacity calc(var(--button-animation-time, 0.3) * 1s) ease-out, rotate calc(var(--button-animation-time, 0.3) * 1s) linear;
+  transition: opacity calc(var(--base-time, 1s) * 0.3s) ease-out, rotate calc(var(--base-time, 1s) * 0.3s) linear;
   animation: x-transition calc(var(--base-time, 1) * 0.5s) infinite ease-in-out;
   animation-direction: alternate;
 }
 
 @keyframes x-transition {
   from {
-    transform: translateX(-2px);
+    transform: translateX(0);
   }
 
   to {
-    transform: translateX(2px);
+    transform: translateX(4px);
   }
 }
 
@@ -51,11 +51,11 @@
 }
 
 .theme-menu__button:hover:not(:disabled) {
-  transition: opacity calc(var(--button-animation-time, 0.3s) * 1s) ease-in-out;
+  transition: opacity calc(var(--base-time, 1s) * 0.3s) ease-in-out;
 }
 
 .theme-menu__button:focus {
-  transition: opacity calc(var(--button-animation-time, 0.3s) * 1s) ease-in-out;
+  transition: opacity calc(var(--base-time, 1s) * 0.3s) ease-in-out;
 }
 
 .theme-menu__button:focus::after {
@@ -65,7 +65,7 @@
 
 @supports selector(:focus-visible) {
   .theme-menu__button:focus-visible {
-    transition: opacity calc(var(--button-animation-time, 0.3s) * 1s) ease-in-out;
+    transition: opacity calc(var(--base-time, 1s) * 0.3s) ease-in-out;
   }
 
   .theme-menu__button:focus-visible::after {
@@ -110,7 +110,7 @@
 }
 
 .card__icon-button {
-  transition: border-color calc(var(--button-animation-time, 0.3) * 1s) ease;
+  transition: border-color calc(var(--base-time, 1s) * 0.3s) ease;
 }
 
 /*анимация ховера, клика и фокуса*/
@@ -137,12 +137,12 @@
 }
 
 .card__icon-button:focus {
-  transition: border-color calc(var(--button-animation-time, 0.3) * 1s) ease;
+  transition: border-color calc(var(--base-time, 1s) * 0.3s) ease;
 }
 
 @supports selector(:focus-visible) {
   .card__icon-button:focus-visible {
-    transition: border-color calc(var(--button-animation-time, 0.3) * 1s) ease;
+    transition: border-color calc(var(--base-time, 1s) * 0.3s) ease;
   }
 }
 
@@ -210,13 +210,13 @@
 
 .common-button:focus {
   transition-property: translate, box-shadow;
-  transition-duration: calc(var(--button-animation-time, 0.3) * 1s), calc(var(--button-animation-time, 0.3) * 1s);
+  transition-duration: calc(var(--base-time, 1s) * 0.3s), calc(var(--base-time, 1s) * 0.3s);
 }
 
 @supports selector(:focus-visible) {
   .common-button:focus-visible {
     transition-property: translate, box-shadow;
-    transition-duration: calc(var(--button-animation-time, 0.3) * 1s), calc(var(--button-animation-time, 0.3) * 1s);
+    transition-duration: calc(var(--base-time, 1s) * 0.3s), calc(var(--base-time, 1s) * 0.3s);
   }
 }
 
