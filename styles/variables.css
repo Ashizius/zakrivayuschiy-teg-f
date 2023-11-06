@@ -7,8 +7,10 @@
   --effect-color: #f00; /* var(--effect-color, #f00) */
   --text-color:   var(--main-color, #000);
   --border-color: var(--main-color, #000);
-  --bg-image: url(../images/background-light.png);
-  --bg-gradient: 180deg, #E7E7E7 0%, #1A1A1A 100%;
+/*  --bg-image: url(../images/background-light.png);*/ /* --bg-gradient: 180deg, #E7E7E7 0%, #1A1A1A 100%;*/
+  --bg-image: repeating-linear-gradient(90deg, #d3d3d3, #d3d3d3 2px, transparent 2px 4px),
+              repeating-linear-gradient(0deg, #d3d3d3, #d3d3d3 2px, transparent 2px 4px),
+              linear-gradient(180deg, #e7e7e7 0px 0.01%, #1a1a1a);
 /*геометрия страницы*/
   --common-gap: 25px;
   --medium-gap:   calc(2 * var(--common-gap));
@@ -17,6 +19,8 @@
   --border-setup: var(--border-size) solid var(--border-color);
   --page-size: clamp(375px, 260.5632px + 30.5164vw, 1440px);
 /*шрифты*/
+  --font-normal: 400;
+  --font-bold:  700;
   --main-font: Inter;
   --accent-font: 'Press Start 2P';
   --main-title-font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
@@ -26,9 +30,11 @@
   --text-font-size:   1.125rem;
   --accent-font-size: 0.875rem;
   /*временные параметры*/
-  --base-time: 10s;
+  --base-time: 10;
+  --button-animation-time: var(--base-time, 1) * 0.3;
+  --icon-time: var(--base-time, 1) * 0.3;
 }
 
 .content__buttons {
-  --icon-time: var(--base-time, 1s) * 0.3;
+
 }

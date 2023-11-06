@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="./styles/style.css" />
     <link rel="stylesheet" href="./styles/animations.css" />
     <link rel="stylesheet" href="./styles/themes.css" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="./images/favicon.ico" sizes="any" />
+    <link rel="icon" href="./svg/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./images/favicon.png" />
     <script src="./scripts/set-theme.js"></script>
   </head>
   <body class="page">
@@ -81,8 +85,8 @@
               </svg>
             </button>
 
-            <button class="card__like-button" type="button">
-              Like
+            <button class="common-button card__like-button" type="button">
+              <span class="button__text">Like</span>
             </button>
           </div>
         </li>
@@ -90,11 +94,11 @@
       </ul>
     </main>
     <footer class="footer">
-      <button class="footer__button" type="button">
+      <button class="common-button footer__button" type="button">
         <img src="" alt="" class="footer__image">
-        <p>
+        <span class="button__text">
           Сохранить на память
-        </p>
+        </span>
       </button>
     </footer>
     <script src="./scripts/like.js"></script>

@@ -20,12 +20,12 @@
   margin-inline: auto;
   color: var(--text-color, #000);
   background-color: var(---bg-color, #fff);
-  background-image: var(--bg-image, url(../images/background-light.png));
-  background-position: fixed;
-  background-repeat: repeat;
+  background-image: var(--bg-image, linear-gradient(180deg, #E7E7E7 0%, #1A1A1A 100%));
+  background-size: cover;
   inline-size: var(--page-size, max(500px, 50%));
   font-family: var(--main-font, Inter), serif;
   font-size: var(--text-font-size, 1.125rem);
+  font-variation-settings: "wght" var(--font-normal, 400);
 }
 
 .header {
@@ -58,7 +58,7 @@
 
 .header__theme-menu {
   /*  */
-  --button-animation-time: calc(var(--base-time, 1s) * 0.3);
+
 }
 
 .theme-menu__list {
@@ -169,6 +169,7 @@
 .content__card-title {
   /* */
   padding: 3.5px 10px;
+  font-variation-settings: "wght" var(--font-bold, 700);
 }
 
 .content__image-container {
@@ -188,6 +189,8 @@
                 0   1px var(--accent-color, #fff),
                 1px 0   var(--accent-color, #fff),
                 0  -1px var(--accent-color, #fff);
+  opacity: 0.5;
+  mix-blend-mode: hard-light;
 
 }
 
@@ -198,7 +201,6 @@
       text-shadow: none;
   }
 }
-
 
 .content__image {
   display: block;
@@ -228,17 +230,39 @@
 .card__icon-button {
   /* */
   display: block;
-  inline-size: 39px;
-  block-size: 36px;
+  inline-size: 41px;
+  block-size: 38px;
   padding: 0;
   background-color: transparent;
-  border: none;
+  border-width: 2px;
+  border-style: solid;
+  border-color: transparent;
 }
 
-.heart-contour,
-.heart-body,
-.heart-core,
-.heart-sparks {
+.like-icon {
+  block-size: 100%;
+  inline-size: 100%;
+}
+
+.card__icon-button:focus {
+  outline:none;
+  border-color: var(--main-color, #000);
+}
+
+@supports selector(:focus-visible) {
+  .card__icon-button:focus {
+    border-color: transparent;
+  }
+  .card__icon-button:focus-visible {
+    border-color: var(--main-color, #000);
+  }
+}
+
+
+.card__icon-button .heart-contour,
+.card__icon-button .heart-body,
+.card__icon-button .heart-core,
+.card__icon-button .heart-sparks {
   transform-origin: 50%;
   fill: var(--main-color, #000);
   opacity: 0;
@@ -250,21 +274,10 @@
   opacity: 1;
 }
 
-.card__icon-button:active .heart-core,
-.card__icon-button:active .heart-body {
+.card__icon-button:active :not(.is-liked) .heart-core,
+.card__icon-button:active :not(.is-liked) .heart-body {
   fill: var(--effect-color, #f00);
   opacity: 1;
-}
-
-.card__like-button {
-  display: block;
-  padding-inline: calc(var(--common-gap, 25px) * 1.5);
-  padding-block: calc(var(--common-gap, 25px) * 0.5);
-  background-color: transparent;
-  border: var(--border-setup, solid);
-  font-family: var(--accent-font, 'Press Start 2P'), monospace;
-  line-height: 90%;
-  font-size: var(--accent-font-size, 0.875rem);
 }
 
 .is-liked .heart-body,
@@ -276,6 +289,65 @@
 
 .is-liked .heart-sparks {
   fill: var(--effect-color, #f00);
+}
+
+.common-button {
+  position: relative;
+  display: block;
+  background-color: var(--bg-color, #fff);
+  border: var(--border-setup, solid);
+  font-family: var(--accent-font, 'Press Start 2P'), monospace;
+  line-height: 90%;
+  font-size: var(--accent-font-size, 0.875rem);
+  translate: 0 0;
+  box-shadow: 0 0 0 0 var(--main-color, #000);
+  will-change: translate, box-shadow;
+  padding: 0;
+}
+
+.card__like-button {
+  padding-inline: calc(var(--common-gap, 25px) * 0.92 - 2px);
+  padding-block: calc(var(--common-gap, 25px) * 0.508 - 2px);
+  min-inline-size: calc(6em + var(--common-gap, 25px) * 1.85);
+}
+
+.common-button:focus {
+  outline:none;
+  translate: -2px -2px;
+  box-shadow: 2px 2px 0 0 var(--main-color, #000);
+}
+
+.button__text {
+  text-align: center;
+}
+
+.common-button::after {
+  content: '';
+  display: block;
+  position: absolute;
+  inset: 0;
+  background-color: var(--bg-color, #fff);
+  scale: 0 1;
+  transform-origin: 0;
+  mix-blend-mode: difference;
+}
+
+.common-button:hover::after {
+  scale: 1 1;
+}
+
+@supports selector(:focus-visible) {
+  .common-button:focus {
+    outline:none;
+    translate: 0;
+    box-shadow: none;
+  }
+
+  .common-button:focus-visible {
+    outline:none;
+    translate: -2px -2px;
+    box-shadow: 2px 2px 0 0 var(--main-color, #000);
+  }
 }
 
 .footer {
