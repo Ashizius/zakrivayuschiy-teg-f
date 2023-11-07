@@ -8,17 +8,15 @@
   --effect-color: #f00; /* var(--effect-color, #f00) */
   --text-color:   var(--main-color, #000);
   --border-color: var(--main-color, #000);
-/*  --bg-image: url(../images/background-light.png);*/ /* --bg-gradient: 180deg, #E7E7E7 0%, #1A1A1A 100%;*/
   --bg-image: repeating-linear-gradient(90deg, #d3d3d3, #d3d3d3 2px, transparent 2px 4px),
               repeating-linear-gradient(0deg, #d3d3d3, #d3d3d3 2px, transparent 2px 4px),
-              linear-gradient(180deg, #e7e7e7 0px 0.01%, #1a1a1a);
+              linear-gradient(180deg, #e7e7e7 0.01%, #1a1a1a);
 /*геометрия страницы*/
   --common-gap: 25px;
   --medium-gap: calc(2 * var(--common-gap));
   --big-gap:    calc(4 * var(--common-gap));
   --border-size: 2px;
   --border-setup: var(--border-size) solid var(--border-color);
-  /*--page-size: clamp(375px, 260.5632px + 30.5164vw, 1440px);*/
   --page-size: calc(260.5632px + 30.5164vw);
 /*шрифты*/
   --font-normal: 400;
@@ -27,9 +25,8 @@
   --accent-font: 'Press Start 2P';
   --main-title-font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
   --secondary-title-font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
-  /*--main-title-font-size: max(3.0625rem, 2.7104rem + 1.5023vw);*/
   --text-font-size:   1.125rem;
   --accent-font-size: 0.875rem;
-  /*временные параметры*/
+  /*временнЫе параметры*/
   --base-time: 1;
 }

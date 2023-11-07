@@ -165,7 +165,6 @@
 }
 
 .content__card {
-  /* */
   background-color: var(--bg-color, #fff);
   border: var(--border-setup, solid);
 }
@@ -381,23 +380,8 @@
   block-size: 1.5em;
   aspect-ratio: 1 / 1;
 }
-/*
-dialog {
-  position: fixed;
-  inset: 0;
-}*/
 
 dialog {
-  padding-block: calc(var(--common-gap, 25px) * 1.28);
-  padding-inline: clamp(var(--common-gap, 25px) * 1.28, 46.4px - 1vi, var(--common-gap, 25px) * 1.68);
-  background-color: inherit;
-  color: inherit;
-  inline-size: clamp(341px, (100vi - 357px + 17px * 2) * 10000, 357px);
-
-}
-
-dialog[open] {
-  display: grid;
   grid-template-rows: fit-content, fit-content;
   grid-template-columns: fit-content, min-content;
   grid-template-areas:
@@ -405,6 +389,32 @@ dialog[open] {
                         "button button";
   row-gap: calc(var(--common-gap, 25px) * 1.25);
   column-gap: calc(var(--common-gap, 25px) * 0.8);
+  padding-block: calc(var(--common-gap, 25px) * 1.28);
+  padding-inline: clamp(var(--common-gap, 25px) * 1.28, 46.4px - 1vi, var(--common-gap, 25px) * 1.68);
+  background-color: inherit;
+  color: inherit;
+  inline-size: clamp(341px, (100vi - 357px + 17px * 2) * 10000, 357px);
+  /*следующие свойства для анимирования появления диалога*/
+  display: grid;
+  position: fixed;
+  inset: 0;
+}
+
+dialog:not([open]) {
+  /*следующие свойства для анимирования появления диалога и скрытия его в закрытом состоянии*/
+  scale: 0 1;
+  pointer-events: none;
+}
+
+dialog:not([open]) .dialog__button,
+dialog:not([open]) .dialog__title,
+dialog:not([open]) .dialog__image {
+  /*следующие свойства скрывают элементы закрытого диалога от доступа с клавиатуры*/
+  display: none;
+}
+
+dialog[open] {
+  scale: 1 1;
 }
 
 dialog::backdrop {
@@ -429,7 +439,8 @@ dialog::backdrop {
 }
 
 @media (width < 375px) {
-:root {
+:root { /*к данному блоку подошёл немного творчески, т.к. нет описания,
+  что должно происходить со страницей при размерах экрана менее 375px*/
   --main-title-font-size: clamp(0.625rem, 0.625rem + 6.4vi, 3.0625rem);
   --secondary-title-font-size: clamp(0.3125rem, 0.3125rem + 2.4vi, 0.875rem);
   --common-gap: 6vw;

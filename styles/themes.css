@@ -13,7 +13,7 @@
   --inverse-color: #00cc14;
   --bg-image: repeating-linear-gradient(90deg, #000, #000 2px, transparent 2px 4px),
               repeating-linear-gradient(0deg, #000, #000 2px, transparent 2px 4px),
-              linear-gradient(180deg, #007f0c 0px 0.01%, #004306);
+              linear-gradient(180deg, #007f0c 0.01%, #004306);
   --font-normal: 465;
   --font-bold:  785;
 }

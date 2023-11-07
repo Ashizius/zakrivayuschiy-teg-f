@@ -30,7 +30,7 @@
 }
 
 .theme-menu__button:disabled::before {
-  transition: opacity calc(var(--base-time, 1s) * 0.3s) ease-out, rotate calc(var(--base-time, 1s) * 0.3s) linear;
+  transition: opacity calc(var(--base-time, 1s) * 0.3s) ease-out, rotate calc(var(--base-time, 1s) * 0.3s) linear; /*добавил анимацию вращения при переключении, легко убрать*/
   animation: x-transition calc(var(--base-time, 1) * 0.5s) infinite ease-in-out;
   animation-direction: alternate;
 }
@@ -222,18 +222,14 @@
   transition: scale calc(var(--base-time, 1) * 0.5s) ease-in-out;
 }
 
-/*
-@media (prefers-reduced-motion: reduce) {
-  .theme-menu__button {
-    transition:none;
-  }
-
-  .theme-menu__button::before {
-    transition:none;
-  }
-
-  .theme-menu__button:disabled::before{
-    animation: none;
-  }
+dialog[open] {
+  transition: scale calc(var(--base-time, 1) * 0.3s);
 }
-*/
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --base-time: 0;
+  }
+
+}
+

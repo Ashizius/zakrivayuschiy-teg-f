@@ -42,6 +42,7 @@ ol {
   list-style: none;
 }
 
+/* не потребовалось
 .visually-hidden {
   position: absolute;
   inline-size: 1px;
@@ -51,3 +52,4 @@ ol {
   clip-path: inset(50%);
   white-space: nowrap;
 }
+*/
