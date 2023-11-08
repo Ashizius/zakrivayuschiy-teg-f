@@ -67,26 +67,28 @@
               &lt;/HTML&gt;
             </p>
           </div>
-
           <p class="content__card-text">
             Это было самое начало пути. На этом этапе важно было проникнуться основами и настроиться на учёбу. И, возможно, подумать, как новые знания могут повлиять на ваше будущее.
           </p>
           <p class="content__card-text">
             Место для ваших воспоминаний о начале обучения.
           </p>
-<!--изображение тут-->
           <div class="content__buttons">
-            <button class="card__icon-button" type="button">
+            <button class="card__icon-button"
+                    type="button"
+                    aria-label="иконка кнопки"
+                    aria-describedby="card__like-button-text">
               <svg xmlns="http://www.w3.org/2000/svg" class="like-icon" viewBox="0 0 39 36">
-                <use href="./svg/heart-icon.svg#Vector"   class="heart-contour"></use>
-                <use href="./svg/heart-icon.svg#Vector_2" class="heart-body"></use>
-                <use href="./svg/heart-icon.svg#Vector_3" class="heart-core"></use>
-                <use href="./svg/heart-icon.svg#Vector_4" class="heart-sparks"></use>
+                <use href="./svg/heart-icon.svg#contour"   class="heart-contour"></use>
+                <use href="./svg/heart-icon.svg#body"      class="heart-body"></use>
+                <use href="./svg/heart-icon.svg#core"      class="heart-core"></use>
+                <use href="./svg/heart-icon.svg#sparks"    class="heart-sparks"></use>
               </svg>
             </button>
 
-            <button class="common-button card__like-button" type="button">
-              <span class="button__text">Like</span>
+            <button class="common-button card__like-button"
+                    type="button">
+              <span class="button__text" id="card__like-button-text">Like</span>
             </button>
           </div>
         </li>
@@ -101,7 +103,7 @@
         <svg  xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 29 28"
               class="footer__image">
-            <use href="./svg/floppy.svg#floppy"></use>
+            <use href="./svg/floppy.svg#floppy" id="floppy-icon"></use>
         </svg>
         <span class="button__text">
           Сохранить на память
@@ -109,12 +111,13 @@
       </button>
     </footer>
     <dialog class="dialog" id="dialog-id">
-      <h2 class="dialog__title">Вставьте дискету, чтобы продолжить</h2>
       <svg xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 29 28"
-            class="dialog__image">
-        <use href="./svg/floppy.svg#floppy"></use>
+        viewBox="0 0 29 28"
+        class="dialog__image"
+        aria-label="изображение дискетки">
+        <use href="#floppy-icon"></use>
       </svg>
+      <h2 class="dialog__title">Вставьте дискету, чтобы продолжить</h2>
       <button class="dialog__button common-button"
               type="button"
               onclick="window['dialog-id'].close()">

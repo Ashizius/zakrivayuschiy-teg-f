@@ -16,8 +16,7 @@
 
 
 .page {
-  width: 375px;
-  /*min-inline-size: 320px;*/
+  min-inline-size: 320px;
   min-block-size: 100dvb;
   margin-inline: auto;
   color: var(--text-color, #000);
@@ -242,6 +241,7 @@
   border-width: 2px;
   border-style: solid;
   border-color: transparent;
+  color: currentColor;
 }
 
 .like-icon {
@@ -262,7 +262,6 @@
     border-color: var(--main-color, #000);
   }
 }
-
 
 .card__icon-button .heart-contour,
 .card__icon-button .heart-body,
@@ -359,7 +358,9 @@
 .footer {
   padding-block-end: var(--big-gap, 100px);
   padding-block-start: var(--medium-gap, 50px);
-  padding-inline: calc(var(--common-gap, 25px) * 1.36);
+  /*padding-inline: calc(var(--common-gap, 25px) * 1.36);*/
+  inline-size: 100%;
+  padding-inline: min(9%, 34px);
 }
 
 .footer__button {
@@ -381,7 +382,9 @@
   aspect-ratio: 1 / 1;
 }
 
-dialog {
+
+dialog[open] {
+  display: grid;
   grid-template-rows: fit-content, fit-content;
   grid-template-columns: fit-content, min-content;
   grid-template-areas:
@@ -393,30 +396,33 @@ dialog {
   padding-inline: clamp(var(--common-gap, 25px) * 1.28, 46.4px - 1vi, var(--common-gap, 25px) * 1.68);
   background-color: inherit;
   color: inherit;
-  inline-size: clamp(341px, (100vi - 357px + 17px * 2) * 10000, 357px);
-  /*следующие свойства для анимирования появления диалога*/
-  display: grid;
-  position: fixed;
-  inset: 0;
+  /*min-inline-size: calc(100vi - 30);*/
+  max-inline-size: 359px;
+  inline-size: calc(100vi - 30);
+  margin-inline: auto;
+  font-family: var(--accent-font, 'Press Start 2P');
+  font-size: var(--accent-font-size, 0.875rem);
+  border: var(--border-setup, 2px solid #000);
 }
 
-dialog:not([open]) {
-  /*следующие свойства для анимирования появления диалога и скрытия его в закрытом состоянии*/
-  scale: 0 1;
-  pointer-events: none;
-}
-
-dialog:not([open]) .dialog__button,
-dialog:not([open]) .dialog__title,
-dialog:not([open]) .dialog__image {
-  /*следующие свойства скрывают элементы закрытого диалога от доступа с клавиатуры*/
-  display: none;
-}
-
+/*
 dialog[open] {
-  scale: 1 1;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: calc(var(--common-gap, 25px) * 1.25);
+  column-gap: calc(var(--common-gap, 25px) * 0.8);
+  padding-block: calc(var(--common-gap, 25px) * 1.28);
+  padding-inline: clamp(var(--common-gap, 25px) * 1.28, 46.4px - 1vi, var(--common-gap, 25px) * 1.68);
+  background-color: inherit;
+  color: inherit;
+  min-inline-size: calc(100vi - 34);
+  inline-size: clamp(341px, (100vi - 375px) * 1000000, 359px);
+  margin-inline: auto;
+  font-family: var(--accent-font, 'Press Start 2P');
+  font-size: var(--accent-font-size, 0.875rem);
+  border: var(--border-setup, 2px solid #000);
 }
-
+*/
 dialog::backdrop {
   background-color: rgb(0 0 0 / 0.75);
 }
@@ -424,6 +430,9 @@ dialog::backdrop {
 .dialog__title {
   grid-area: title;
   font-weight: 400;
+  font-size: inherit;
+  inline-size: fit-content;
+  font-weight: normal;
 }
 
 .dialog__image {
@@ -438,9 +447,63 @@ dialog::backdrop {
   min-block-size: 38px;
 }
 
+/*
 @media (width < 375px) {
-:root { /*к данному блоку подошёл немного творчески, т.к. нет описания,
-  что должно происходить со страницей при размерах экрана менее 375px*/
+  :root {
+    --main-title-font-size: clamp(0.875rem, 13.0667vi, 3.0625rem);
+    --secondary-title-font-size: clamp(0.3125rem, 0.3125rem + 2.4vi, 0.875rem);
+    }
+
+  }
+*/
+/*
+было описано анимирование появления диалога, но не прошло автотесты
+
+dialog {
+  grid-template-rows: fit-content, fit-content;
+  grid-template-columns: fit-content, min-content;
+  grid-template-areas:
+                        "image title  "
+                        "button button";
+  row-gap: calc(var(--common-gap, 25px) * 1.25);
+  column-gap: calc(var(--common-gap, 25px) * 0.8);
+  padding-block: calc(var(--common-gap, 25px) * 1.28);
+  padding-inline: clamp(var(--common-gap, 25px) * 1.28, 46.4px - 1vi, var(--common-gap, 25px) * 1.68);
+  background-color: inherit;
+  color: inherit;
+  inline-size: clamp(min(100vi - 4px, 341px), (100vi - 357px + 17px * 2) * 10000, 357px);
+  display: grid;
+  position: fixed;
+  inset: 0;
+}
+dialog:not([open]) {
+  scale: 0 1;
+  pointer-events: none;
+}
+
+dialog:not([open]) .dialog__button,
+dialog:not([open]) .dialog__title,
+dialog:not([open]) .dialog__image {
+  display: none;
+}
+
+dialog[open] {
+  scale: 1 1;
+}
+
+
+dialog[open] {
+  transition: scale calc(var(--base-time, 1) * 0.3s);
+}
+
+
+*/
+
+
+/*
+@media (width < 375px) {
+:root { к данному блоку подошёл немного творчески, т.к. нет описания,
+  что должно происходить со страницей при размерах экрана менее 375px
   --main-title-font-size: clamp(0.625rem, 0.625rem + 6.4vi, 3.0625rem);
   --secondary-title-font-size: clamp(0.3125rem, 0.3125rem + 2.4vi, 0.875rem);
   --common-gap: 6vw;
@@ -454,3 +517,4 @@ dialog::backdrop {
   }
 
 }
+*/
