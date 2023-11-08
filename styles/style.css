@@ -160,7 +160,9 @@
 }
 
 .content__list {
-  /* */
+  display: flex;
+  flex-direction: column;
+  gap: var(--medium-gap, 50px);
 }
 
 .content__card {
@@ -193,7 +195,6 @@
                 0  -1px var(--accent-color, #fff);
   opacity: 0.5;
   mix-blend-mode: hard-light;
-
 }
 
 @supports((text-stroke: 1px #fff) or (-webkit-text-stroke: 1px #fff)) {
@@ -210,7 +211,34 @@
   aspect-ratio: 1/1;
   object-fit: cover;
   object-position: 96% center;
+}
+
+.content__card:nth-of-type(2) .content__image {
   filter: sepia();
+}
+
+.content__card:nth-of-type(3) .content__image {
+  filter: saturate(3);
+}
+
+.content__card:nth-of-type(4) .content__image {
+  filter: hue-rotate(180deg);
+}
+
+.content__card:nth-of-type(5) .content__image {
+  filter: invert(65%);
+}
+
+.content__card:nth-of-type(6) .content__image {
+  filter: grayscale(0.9);
+}
+
+.content__card:nth-of-type(7) .content__image {
+  filter: blur(18px);
+}
+
+.content__card:nth-of-type(8) .content__image {
+  filter: saturate(1.2) hue-rotate(50deg) contrast(5);
 }
 
 .content__card-text {
