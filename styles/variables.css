@@ -17,7 +17,7 @@
   --big-gap:    calc(4 * var(--common-gap));
   --border-size: 2px;
   --border-setup: var(--border-size) solid var(--border-color);
-  --page-size: min(calc(260.5632px + 30.5164%), 100%);
+  --page-size: min(260.5632px + 30.5164%, 100%);
 /*шрифты*/
   --font-normal: 400;
   --font-bold:  700;

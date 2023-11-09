@@ -23,10 +23,15 @@
   background-color: var(--bg-color, #fff);
   background-image: var(--bg-image, linear-gradient(180deg, #E7E7E7 0%, #1A1A1A 100%));
   background-size: cover;
-  inline-size: var(--page-size, max(500px, 50%));
   font-family: var(--main-font, Inter), serif;
   font-size: var(--text-font-size, 1.125rem);
   font-variation-settings: "wght" var(--font-normal, 400);
+}
+
+
+.sized {
+  inline-size: var(--page-size, max(375px, 50%));
+  margin-inline: auto;
 }
 
 .header {
@@ -387,7 +392,6 @@
   padding-block-end: var(--big-gap, 100px);
   padding-block-start: var(--medium-gap, 50px);
   /*padding-inline: calc(var(--common-gap, 25px) * 1.36);*/
-  inline-size: 100%;
   padding-inline: min(9%, 34px);
 }
 
@@ -412,7 +416,7 @@
 
 
 dialog[open] {
-  margin-inline: auto;
+  margin-inline: max(17px, auto);
   display: grid;
   grid-template-rows: fit-content, fit-content;
   grid-template-columns: fit-content, min-content;
@@ -426,7 +430,7 @@ dialog[open] {
   padding-inline-start: clamp(var(--common-gap, 25px), 46.4px - 1vi, var(--common-gap, 25px) * 1.36);
   padding-inline-end: clamp(var(--common-gap, 25px) * 1.2, 46.4px - 1vi, var(--common-gap, 25px) * 1.6);*/
   padding-inline: clamp(30px, 415px - 100%, 10.6%); /*изменение паддинга !!!!*/
-  max-inline-size: min(353px, calc(100% - 34px)); /*сохранить мин отступ от края экрана в 17px !!!!*/
+  /*max-inline-size: min(353px, calc(100% - 34px));*//*сохранить мин отступ от края экрана в 17px !!!!*/
   border: var(--border-setup, 2px solid #000);
   background-color: inherit;
   /*min-inline-size: calc(100vi - 30px);*/
