@@ -14,31 +14,33 @@
 
 */
 
-
 .page {
   /*min-inline-size: 320px;*/
   min-block-size: 100dvb;
   margin-inline: auto;
   color: var(--text-color, #000);
   background-color: var(--bg-color, #fff);
-  background-image: var(--bg-image, linear-gradient(180deg, #E7E7E7 0%, #1A1A1A 100%));
+  background-image: var(
+    --bg-image,
+    linear-gradient(180deg, #e7e7e7 0%, #1a1a1a 100%)
+  );
   background-size: cover;
   font-family: var(--main-font, Inter), serif;
   font-size: var(--text-font-size, 1.125rem);
-  font-variation-settings: "wght" var(--font-normal, 400);
-  background-attachment : fixed;
+  font-variation-settings: 'wght' var(--font-normal, 400);
+  background-attachment: fixed;
 }
-
 
 .sized {
   inline-size: var(--page-size, max(375px, 50%));
   margin-inline: auto;
 }
 
-.no-selection, .common-button {
+.no-selection,
+.common-button {
   -ms-user-select: none;
-	-moz-user-select: none;
-	-webkit-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
   user-select: none;
 }
 
@@ -58,7 +60,7 @@
   display: block;
   text-decoration: none;
   font-style: normal;
-  font-size: var( --main-title-font-size, calc(2.7104rem + 1.5023vi));
+  font-size: var(--main-title-font-size, calc(2.7104rem + 1.5023vi));
   font-weight: inherit;
 }
 
@@ -66,7 +68,7 @@
   display: block;
   padding-block-start: 20px;
   padding-block-end: calc(var(--common-gap, 25px));
-  font-size: var( --secondary-title-font-size, calc(0.6769rem + 0.8451vi));
+  font-size: var(--secondary-title-font-size, calc(0.6769rem + 0.8451vi));
   font-weight: inherit;
 }
 
@@ -79,7 +81,7 @@
   text-align: start;
 }
 
-.theme-menu__item  {
+.theme-menu__item {
   font-size: 14px;
 }
 
@@ -103,7 +105,7 @@
   position: absolute;
   inset-block-start: 0;
   inset-inline-start: -1.5em;
-  content:'▶';
+  content: '▶';
   opacity: 0;
 }
 
@@ -113,7 +115,7 @@
 
 .theme-menu__button:disabled::before {
   opacity: 1;
-  content:'▶';
+  content: '▶';
   rotate: X 360deg;
   transform-origin: 0 calc(0.5em - 0.05rem);
 }
@@ -163,10 +165,6 @@
   }
 }
 
-.content {
-  /* */
-}
-
 .content__list {
   display: flex;
   flex-direction: column;
@@ -182,7 +180,7 @@
   font-size: inherit;
   font-weight: var(--font-bold, 700);
   padding: calc(var(--border-size, 2px) * 2.8) 10px;
-  font-variation-settings: "wght" var(--font-bold, 700);
+  font-variation-settings: 'wght' var(--font-bold, 700);
 }
 
 .content__image-container {
@@ -194,23 +192,22 @@
 .content__watermark {
   position: absolute;
   inset-block-start: var(--common-gap, 25px);
-  inset-inline-end:  var(--common-gap, 25px);
+  inset-inline-end: var(--common-gap, 25px);
   font-family: var(--accent-font, 'Press Start 2P'), monospace;
   font-size: var(--accent-font-size, 0.875rem);
   color: var(--watermark-color, #000);
-  text-shadow: -1px 0   var(--watermark-accent, #fff),
-                0   1px var(--watermark-color, #fff),
-                1px 0   var(--watermark-color, #fff),
-                0  -1px var(--watermark-color, #fff);
+  text-shadow: -1px 0 var(--watermark-accent, #fff),
+    0 1px var(--watermark-color, #fff), 1px 0 var(--watermark-color, #fff),
+    0 -1px var(--watermark-color, #fff);
   opacity: 0.5;
   mix-blend-mode: hard-light;
 }
 
-@supports((text-stroke: 1px #fff) or (-webkit-text-stroke: 1px #fff)) {
+@supports ((text-stroke: 1px #fff) or (-webkit-text-stroke: 1px #fff)) {
   .content__watermark {
-      -webkit-text-stroke: 1px var(--watermark-accent, #fff);
-      text-stroke: 1px var(--watermark-accent, #fff);
-      text-shadow: none;
+    -webkit-text-stroke: 1px var(--watermark-accent, #fff);
+    text-stroke: 1px var(--watermark-accent, #fff);
+    text-shadow: none;
   }
 }
 
@@ -285,8 +282,7 @@
 .common-button,
 .theme-menu__button {
   cursor: pointer;
-  }
-
+}
 
 .like-icon {
   block-size: 100%;
@@ -295,7 +291,7 @@
 }
 
 .card__icon-button:focus {
-  outline:none;
+  outline: none;
   border-color: var(--main-color, #000);
 }
 
@@ -340,7 +336,6 @@
   fill: var(--effect-color, #f00);
 }
 
-
 .common-button {
   position: relative;
   display: block;
@@ -372,20 +367,20 @@
 }
 
 .common-button:focus {
-  outline:none;
+  outline: none;
   translate: -2px -2px;
   box-shadow: 2px 2px 0 0 var(--main-color, #000);
 }
 
 @supports selector(:focus-visible) {
   .common-button:focus {
-    outline:none;
+    outline: none;
     translate: 0;
     box-shadow: none;
   }
 
   .common-button:focus-visible {
-    outline:none;
+    outline: none;
     translate: -2px -2px;
     box-shadow: 2px 2px 0 0 var(--main-color, #000);
   }
@@ -411,7 +406,7 @@
   /* */
   display: flex;
   padding-inline: calc(var(--common-gap, 25px) * 0.74);
-  padding-block:  calc(var(--common-gap, 25px) * 0.6);
+  padding-block: calc(var(--common-gap, 25px) * 0.6);
   align-items: center;
   justify-content: center;
   gap: 8px;
@@ -422,15 +417,15 @@
 }
 
 .footer__image {
-  inline-size: clamp(1.5em, ( 376px - 100vi ) * 10000, 2em); /*для совместимости*/
+  inline-size: clamp(1.5em, (376px - 100vi) * 10000, 2em); /*для совместимости*/
   aspect-ratio: 1 / 1;
   object-fit: cover;
   object-position: center;
 }
 
-@supports (inline-size: clamp(1.5em, ( 376px - 100svi ) * 10000, 2em)) {
+@supports (inline-size: clamp(1.5em, (376px - 100svi) * 10000, 2em)) {
   .footer__image {
-    inline-size: clamp(1.5em, ( 376px - 100svi ) * 10000, 2em);
+    inline-size: clamp(1.5em, (376px - 100svi) * 10000, 2em);
   }
 }
 
@@ -441,8 +436,8 @@ dialog[open] {
   grid-template-rows: fit-content, fit-content;
   grid-template-columns: fit-content, min-content;
   grid-template-areas:
-                        "image title  "
-                        "button button";
+    'image title  '
+    'button button';
   row-gap: calc(var(--common-gap, 25px) * 1.25);
   column-gap: calc(var(--common-gap, 25px) * 0.8);
   padding-block: calc(var(--common-gap, 25px) * 1.2);
@@ -453,7 +448,7 @@ dialog[open] {
   color: inherit;
   font-family: var(--accent-font, 'Press Start 2P');
   font-size: var(--accent-font-size, 0.875rem);
-  line-height:150%;
+  line-height: 150%;
 }
 
 dialog::backdrop {
@@ -464,7 +459,6 @@ dialog::backdrop {
   grid-area: title;
   font-weight: 400;
   font-size: inherit;
-  font-weight: normal;
 }
 
 .dialog__image {
