@@ -11,13 +11,15 @@
   --bg-image: repeating-linear-gradient(90deg, #d3d3d3, #d3d3d3 2px, transparent 2px 4px),
               repeating-linear-gradient(0deg, #d3d3d3, #d3d3d3 2px, transparent 2px 4px),
               linear-gradient(180deg, #e7e7e7 0.01%, #1a1a1a);
+  --watermark-color: #000; /* var(--watermark-color, #000); */
+  --watermark-accent: #fff; /* var(--watermark-accent, #fff); */
 /*геометрия страницы*/
   --common-gap: 25px;
   --medium-gap: calc(2 * var(--common-gap));
   --big-gap:    calc(4 * var(--common-gap));
   --border-size: 2px;
   --border-setup: var(--border-size) solid var(--border-color);
-  --page-size: min(260.5632px + 30.5164%, 100%);
+  --page-size: min(260.5632px + 30.5164%, 100%); /*переменная, ограничивающая ширину карточек*/
 /*шрифты*/
   --font-normal: 400;
   --font-bold:  700;

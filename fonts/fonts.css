@@ -1,10 +1,10 @@
 /* В этом файле вы импортируете все шрифты для сайта. Один из них вариативный и требует особенной настройки */
 @font-face {
   font-family: Inter;
-  src: local(Inter-Variable),
-       local('Inter-Variable'),
-       url(./Inter-Variable.woff2) format('woff2 supports variations'),
-       url(./Inter-Variable.woff2) format('woff2-variations'); /*fallback*/
+  src:  local(Inter-Variable),
+        local('Inter-Variable'),
+        url(./Inter-Variable.woff2) format('woff2 supports variations'),
+        url(./Inter-Variable.woff2) format('woff2-variations'); /*fallback*/
   font-display: swap;
   font-weight: 400 785; /*диапазон толщины начертаний*/
 }

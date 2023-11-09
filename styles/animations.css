@@ -25,10 +25,6 @@
   transition: opacity calc(var(--base-time, 1s) * 0.3s);
 }
 
-.theme-menu__button:disabled {
-  transition: opacity calc(var(--base-time, 1s) * 0.3s);
-}
-
 .theme-menu__button:disabled::before {
   transition: opacity calc(var(--base-time, 1s) * 0.3s) ease-out, rotate calc(var(--base-time, 1s) * 0.3s) linear; /*добавил анимацию вращения при переключении, легко убрать*/
   animation: x-transition calc(var(--base-time, 1) * 0.5s) infinite ease-in-out;
