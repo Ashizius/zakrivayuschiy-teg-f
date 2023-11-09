@@ -412,6 +412,7 @@
 
 
 dialog[open] {
+  margin-inline: auto;
   display: grid;
   grid-template-rows: fit-content, fit-content;
   grid-template-columns: fit-content, min-content;
@@ -421,16 +422,19 @@ dialog[open] {
   row-gap: calc(var(--common-gap, 25px) * 1.25);
   column-gap: calc(var(--common-gap, 25px) * 0.8);
   padding-block: calc(var(--common-gap, 25px) * 1.28);
-  padding-inline: clamp(var(--common-gap, 25px) * 1.28, 46.4px - 1vi, var(--common-gap, 25px) * 1.68);
+  /*
+  padding-inline-start: clamp(var(--common-gap, 25px), 46.4px - 1vi, var(--common-gap, 25px) * 1.36);
+  padding-inline-end: clamp(var(--common-gap, 25px) * 1.2, 46.4px - 1vi, var(--common-gap, 25px) * 1.6);*/
+  padding-inline: clamp(30px, 415px - 100%, 10.6%); /*изменение паддинга !!!!*/
+  max-inline-size: min(353px, calc(100% - 34px)); /*сохранить мин отступ от края экрана в 17px !!!!*/
+  border: var(--border-setup, 2px solid #000);
   background-color: inherit;
+  /*min-inline-size: calc(100vi - 30px);*/
+  /*max-inline-size: 359px;*/
   color: inherit;
-  /*min-inline-size: calc(100vi - 30);*/
-  max-inline-size: 359px;
-  inline-size: calc(100vi - 30);
-  margin-inline: auto;
   font-family: var(--accent-font, 'Press Start 2P');
   font-size: var(--accent-font-size, 0.875rem);
-  border: var(--border-setup, 2px solid #000);
+  line-height:150%;
 }
 
 /*
