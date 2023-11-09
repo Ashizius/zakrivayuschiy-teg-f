@@ -16,7 +16,7 @@
 
 /* анимации меню*/
 
-.theme-menu__button{
+.theme-menu__button {
   transition: opacity calc(var(--base-time, 1s) * 0.5s) ease-in-out,
               scale calc(var(--base-time, 1s) * 0.5s) ease-in-out;
 }
@@ -93,7 +93,7 @@
   transition-delay: calc(var(--base-time, 1) * 0.03s), calc(var(--base-time, 1) * 0.03s);
 }
 
-.card__icon-button :not(.is-liked) .heart-body{
+.card__icon-button :not(.is-liked) .heart-body {
   transition-delay: 0s, 0s;
 }
 
