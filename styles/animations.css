@@ -57,16 +57,18 @@
   }
 }
 
-.theme-menu__button:hover:not(:disabled),
-.theme-menu__button:focus {
+.theme-menu__button:hover:not(:disabled){
   opacity: 0.6;
 }
 
-.theme-menu__button:focus::after {
-  opacity: 1;
-  scale: 1;
+.theme-menu__button:focus-visible {
+  opacity: 0.6;
 }
 
+.theme-menu__button:focus-visible::after {
+  opacity: 1;
+  transform: scale(1);
+}
 /* анимации карточек*/
 
 /* исходные значения */
@@ -147,8 +149,8 @@
   fill: var(--effect-color, #f00);
 }
 
-.card__icon-button:focus {
-  transition: border-color calc(var(--base-time, 1) * 0.3s) ease;
+.card__icon-button:focus-visible {
+  border-color: var(--main-color, #000);
 }
 
 /* анимации лайка по нажатию*/
@@ -244,54 +246,12 @@
   transform: scale(1, 1);
 }
 
-.common-button:focus {
+.common-button:focus-visible {
   transition-property: transform, box-shadow;
   transition-duration: calc(var(--base-time, 1) * 0.3s),
     calc(var(--base-time, 1) * 0.3s);
   transform: translate(-2px, -2px);
   box-shadow: 2px 2px 0 0 var(--main-color, #000);
-}
-
-@supports selector(:focus-visible) {
-
-  .theme-menu__button:focus {
-    opacity: 1;
-  }
-
-  .theme-menu__button:focus::after {
-    opacity: 0;
-    transform: scale(0);
-  }
-
-  .theme-menu__button:focus-visible {
-    opacity: 0.6;
-  }
-
-  .theme-menu__button:focus-visible::after {
-    opacity: 1;
-    transform: scale(1);
-  }
-  .card__icon-button:focus {
-    border-color: transparent;
-  }
-
-  .card__icon-button:focus-visible {
-    border-color: var(--main-color, #000);
-  }
-
-  .common-button:focus {
-    transform: translate(0);
-    box-shadow: none;
-  }
-
-  .common-button:focus-visible {
-    transition-property: transform, box-shadow;
-    transition-duration: calc(var(--base-time, 1) * 0.3s),
-      calc(var(--base-time, 1) * 0.3s);
-    transform: translate(-2px, -2px);
-    box-shadow: 2px 2px 0 0 var(--main-color, #000);
-  }
-
 }
 
 @media (prefers-reduced-motion: reduce) {
