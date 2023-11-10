@@ -117,27 +117,15 @@
   color: currentColor;
 }
 
+.theme-menu__button:disabled {
+  pointer-events: none;
+}
+
 .theme-menu__button::before {
   position: absolute;
   inset-block-start: 0;
   inset-inline-start: -1.5em;
   content: '▶';
-  opacity: 0;
-}
-
-.theme-menu__button:disabled {
-  opacity: 0.6;
-}
-
-.theme-menu__button:disabled::before {
-  opacity: 1;
-  content: '▶';
-  rotate: X 360deg;
-  transform-origin: 0 calc(0.5em - 0.05rem);
-}
-
-.theme-menu__button:hover:not(:disabled) {
-  opacity: 0.6;
 }
 
 .theme-menu__button::after {
@@ -147,41 +135,13 @@
   inset-block-end: -1px;
   width: 100%;
   border-block-end: 2px solid var(--main-color, #000);
-  opacity: 0;
-  transform-origin: 0;
-  scale: 0 1;
 }
 
 .theme-menu__button:focus {
-  opacity: 0.6;
   outline: none;
 }
 
-.theme-menu__button:focus::after {
-  opacity: 1;
-  scale: 1;
-}
-
-@supports selector(:focus-visible) {
-  .theme-menu__button:focus {
-    outline: none;
-    opacity: 0.6;
-  }
-  .theme-menu__button:focus::after {
-    opacity: 0;
-  }
-
-  .theme-menu__button:focus-visible {
-    opacity: 0.6;
-  }
-
-  .theme-menu__button:focus-visible::after {
-    opacity: 1;
-    scale: 1;
-  }
-}
-
-.content__list {
+.content {
   display: flex;
   flex-direction: column;
   gap: calc(var(--medium-gap, 50px) - 1.2px);
@@ -235,31 +195,35 @@
   object-position: 96% center;
 }
 
-.content__card:nth-of-type(2) .content__image {
-  filter: sepia();
+.content__image--calm {
+  filter: brightness(50%);
 }
 
-.content__card:nth-of-type(3) .content__image {
+.content__image--old-school {
+  filter: sepia(1);
+}
+
+.content__image--colorful {
   filter: saturate(3);
 }
 
-.content__card:nth-of-type(4) .content__image {
+.content__image--new-vision {
   filter: hue-rotate(180deg);
 }
 
-.content__card:nth-of-type(5) .content__image {
+.content__image--negative {
   filter: invert(65%);
 }
 
-.content__card:nth-of-type(6) .content__image {
+.content__image--depressed {
   filter: grayscale(0.9);
 }
 
-.content__card:nth-of-type(7) .content__image {
+.content__image--drunk-vision {
   filter: blur(18px);
 }
 
-.content__card:nth-of-type(8) .content__image {
+.content__image--crazy {
   filter: saturate(1.2) hue-rotate(50deg) contrast(5);
 }
 
@@ -311,47 +275,6 @@
   border-color: var(--main-color, #000);
 }
 
-@supports selector(:focus-visible) {
-  .card__icon-button:focus {
-    border-color: transparent;
-  }
-  .card__icon-button:focus-visible {
-    border-color: var(--main-color, #000);
-  }
-}
-
-.card__icon-button .heart-contour,
-.card__icon-button .heart-body,
-.card__icon-button .heart-core,
-.card__icon-button .heart-sparks {
-  transform-origin: 50%;
-  fill: var(--main-color, #000);
-  opacity: 0;
-}
-
-.card__icon-button .heart-contour,
-.card__icon-button:hover .heart-core,
-.card__icon-button:hover .heart-body {
-  opacity: 1;
-}
-
-.card__icon-button:active :not(.is-liked) .heart-core,
-.card__icon-button:active :not(.is-liked) .heart-body {
-  fill: var(--effect-color, #f00);
-  opacity: 1;
-}
-
-.is-liked .heart-body,
-.is-liked .heart-core,
-.is-liked .heart-contour {
-  fill: var(--effect-color, #f00);
-  opacity: 1;
-}
-
-.is-liked .heart-sparks {
-  fill: var(--effect-color, #f00);
-}
-
 .common-button {
   position: relative;
   display: block;
@@ -360,8 +283,6 @@
   font-family: var(--accent-font, 'Press Start 2P'), monospace;
   line-height: 90%;
   font-size: var(--accent-font-size, 0.875rem);
-  translate: 0 0;
-  box-shadow: 0 0 0 0 var(--main-color, #000);
   will-change: translate, box-shadow;
   padding: 0;
   color: currentColor;
@@ -373,33 +294,11 @@
   position: absolute;
   inset: 0;
   background-color: var(--inverse-color, #fff);
-  scale: 0 1;
-  transform-origin: 0;
   mix-blend-mode: difference;
-}
-
-.common-button:hover::after {
-  scale: 1 1;
 }
 
 .common-button:focus {
   outline: none;
-  translate: -2px -2px;
-  box-shadow: 2px 2px 0 0 var(--main-color, #000);
-}
-
-@supports selector(:focus-visible) {
-  .common-button:focus {
-    outline: none;
-    translate: 0;
-    box-shadow: none;
-  }
-
-  .common-button:focus-visible {
-    outline: none;
-    translate: -2px -2px;
-    box-shadow: 2px 2px 0 0 var(--main-color, #000);
-  }
 }
 
 .card__like-button {
@@ -419,7 +318,6 @@
 }
 
 .footer__button {
-  /* */
   display: flex;
   padding-inline: calc(var(--common-gap, 25px) * 0.74);
   padding-block: calc(var(--common-gap, 25px) * 0.6);
@@ -445,11 +343,7 @@
   }
 }
 
-dialog[open] {
-  margin-inline: max(17px, auto);
-  display: grid;
-  grid-template-rows: fit-content, fit-content;
-  grid-template-columns: fit-content, min-content;
+dialog {
   grid-template-areas:
     'image title  '
     'button button';
@@ -464,6 +358,12 @@ dialog[open] {
   font-family: var(--accent-font, 'Press Start 2P');
   font-size: var(--accent-font-size, 0.875rem);
   line-height: 150%;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+dialog[open] {
+  display: grid;
 }
 
 dialog::backdrop {

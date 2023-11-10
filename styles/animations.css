@@ -13,20 +13,36 @@
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
 */
 
-
 /* анимации меню*/
 
 .theme-menu__button {
-  transition: opacity calc(var(--base-time, 1s) * 0.5s) ease-in-out,
-              scale calc(var(--base-time, 1s) * 0.5s) ease-in-out;
+  transition: opacity calc(var(--base-time, 1) * 0.3s) ease-in-out;
+}
+
+.theme-menu__button::before {
+  opacity: 0;
+  transform-origin: 0 calc(0.5em - 0.05rem);
+}
+
+.theme-menu__button::after {
+  opacity: 0;
+  transform-origin: 0;
+  transform: scale(0, 1);
+  transition: opacity calc(var(--base-time, 1) * 0.5s) ease-in-out,
+    transform calc(var(--base-time, 1) * 0.5s) ease-in-out;
 }
 
 .theme-menu__button:disabled {
-  transition: opacity calc(var(--base-time, 1s) * 0.3s);
+  opacity: 0.6;
+  transition: opacity calc(var(--base-time, 1) * 0.3s);
+  rotate: X 0deg;
 }
 
 .theme-menu__button:disabled::before {
-  transition: opacity calc(var(--base-time, 1s) * 0.3s) ease-out, rotate calc(var(--base-time, 1s) * 0.3s) linear; /*добавил анимацию вращения при переключении, легко убрать*/
+  opacity: 1;
+  rotate: X 360deg;
+  transition: opacity calc(var(--base-time, 1) * 0.3s) ease-out,
+              rotate calc(var(--base-time, 1) * 0.3s) linear; /*добавил анимацию вращения при переключении, легко убрать*/
   animation: x-transition calc(var(--base-time, 1) * 0.5s) infinite ease-in-out;
   animation-direction: alternate;
 }
@@ -41,153 +57,164 @@
   }
 }
 
-.theme-menu__button::after {
-  transition: opacity calc(var(--base-time, 1s) * 0.5s) ease-in-out,
-              scale calc(var(--base-time, 1s) * 0.5s) ease-in-out;
-}
-
-.theme-menu__button:hover:not(:disabled) {
-  transition: opacity calc(var(--base-time, 1s) * 0.3s) ease-in-out;
-}
-
+.theme-menu__button:hover:not(:disabled),
 .theme-menu__button:focus {
-  transition: opacity calc(var(--base-time, 1s) * 0.3s) ease-in-out;
+  opacity: 0.6;
 }
 
 .theme-menu__button:focus::after {
-  transition: opacity calc(var(--base-time, 1s) * 0.5s) ease-in-out,
-              scale calc(var(--base-time, 1s) * 0.5s) ease-in-out;
-}
-
-@supports selector(:focus-visible) {
-  .theme-menu__button:focus-visible {
-    transition: opacity calc(var(--base-time, 1s) * 0.3s) ease-in-out;
-  }
-
-  .theme-menu__button:focus-visible::after {
-    transition: opacity calc(var(--base-time, 1s) * 0.5s) ease-in-out,
-                scale calc(var(--base-time, 1s) * 0.5s) ease-in-out;
-  }
+  opacity: 1;
+  scale: 1;
 }
 
 /* анимации карточек*/
 
-
-/*анимация к исходному*/
-.is-liked .heart-body,
-.is-liked .heart-core {
-  transition-property: opacity, fill;
+/* исходные значения */
+.card__icon-button .heart,
+.card__icon-button .heart-sparks {
+  transform-origin: 50%;
+  fill: currentColor;
 }
 
-.is-liked .heart-contour {
+.card__icon-button .heart-contour {
   transition-property: fill;
 }
 
-.card__icon-button :not(.is-liked) .heart-core,
-.card__icon-button :not(.is-liked) .heart-body {
-  transition-duration: calc(var(--base-time, 1) * 0.3s), calc(var(--base-time, 1) * 0.3s);
-  transition-timing-function: linear, linear;
+.card__icon-button .heart-body,
+.card__icon-button .heart-core {
+  transition-property: opacity, fill;
 }
 
-.card__icon-button :not(.is-liked) .heart-core {
-  transition-delay: calc(var(--base-time, 1) * 0.03s), calc(var(--base-time, 1) * 0.03s);
+.card__icon-button .heart-body,
+.card__icon-button .heart-core,
+.card__icon-button .heart-sparks {
+  opacity: 0;
 }
 
-.card__icon-button :not(.is-liked) .heart-body {
-  transition-delay: 0s, 0s;
-}
-
-.card__icon-button :not(.is-liked) .heart-contour {
+/*анимация к исходному*/
+.card__icon-button .like-icon:not(.is-liked) .heart-contour {
   transition-duration: calc(var(--base-time, 1) * 0.1s);
   transition-delay: 0s;
   transition-timing-function: linear;
 }
 
+.card__icon-button :not(.is-liked) .heart-core {
+  transition-duration: calc(var(--base-time, 1) * 0.3s),
+    calc(var(--base-time, 1) * 0.3s);
+  transition-delay: calc(var(--base-time, 1) * 0.03s),
+    calc(var(--base-time, 1) * 0.03s);
+  transition-timing-function: linear, linear;
+}
+
+.card__icon-button :not(.is-liked) .heart-body {
+  transition-duration: calc(var(--base-time, 1) * 0.3s),
+    calc(var(--base-time, 1) * 0.3s);
+  transition-delay: 0s, 0s;
+  transition-timing-function: linear, linear;
+}
+
 .card__icon-button {
-  transition: border-color calc(var(--base-time, 1s) * 0.3s) ease;
+  transition: border-color calc(var(--base-time, 1) * 0.3s) ease;
 }
 
 /*анимация ховера, клика и фокуса*/
-.card__icon-button:hover .heart-core {
-  transition-duration: calc(var(--base-time, 1) * 0.3s);
-  transition-delay: 0s;
+.card__icon-button:hover .heart-core,
+.card__icon-button:hover .heart-body,
+.card__icon-button:active :not(.is-liked) .heart-core,
+.card__icon-button:active :not(.is-liked) .heart-body {
+  opacity: 1;
 }
 
-.card__icon-button:hover .heart-body {
-  transition-duration: calc(var(--base-time, 1) * 0.3s), 0s;
-  transition-delay: calc(var(--base-time, 1) * 0.05s), 0s;
-  transition-timing-function: ease, ease;
-}
-
-.card__icon-button:active .heart-core {
-  transition-duration: calc(var(--base-time, 1) * 0.3s), calc(var(--base-time, 1) * 0.3s);
+.card__icon-button:hover :not(.is-liked) .heart-core,
+.card__icon-button:active :not(.is-liked) .heart-core {
+  transition-duration: calc(var(--base-time, 1) * 0.3s),
+    calc(var(--base-time, 1) * 0.3s);
   transition-delay: 0s, 0s;
-  transition-timing-function: ease, ease;
+  transition-timing-function: linear, linear;
 }
 
+.card__icon-button:hover :not(.is-liked) .heart-body,
+.card__icon-button:active :not(.is-liked) .heart-body {
+  transition-duration: calc(var(--base-time, 1) * 0.3s),
+    calc(var(--base-time, 1) * 0.3s);
+  transition-delay: calc(var(--base-time, 1) * 0.05s),
+    calc(var(--base-time, 1) * 0.05s);
+  transition-timing-function: linear, linear;
+}
+
+.card__icon-button:active .heart-core,
 .card__icon-button:active .heart-body {
-  transition-duration: calc(var(--base-time, 1) * 0.3s), calc(var(--base-time, 1) * 0.3s);
-  transition-delay: calc(var(--base-time, 1) * 0.05s), calc(var(--base-time, 1) * 0.05s);
+  fill: var(--effect-color, #f00);
 }
 
 .card__icon-button:focus {
-  transition: border-color calc(var(--base-time, 1s) * 0.3s) ease;
-}
-
-@supports selector(:focus-visible) {
-  .card__icon-button:focus-visible {
-    transition: border-color calc(var(--base-time, 1s) * 0.3s) ease;
-  }
+  transition: border-color calc(var(--base-time, 1) * 0.3s) ease;
 }
 
 /* анимации лайка по нажатию*/
 
-:not(.card__icon-button:hover) .is-liked .heart-core { /*кадр 1: 0s -- 0.3s*/
+.card__icon-button .is-liked .heart-core,
+.card__icon-button .is-liked .heart-body,
+.card__icon-button .is-liked .heart-contour {
+  fill: var(--effect-color, #f00);
+  opacity: 1;
+}
+
+:not(.card__icon-button:hover) .is-liked .heart-core {
+  /*кадр 1: 0s -- 0.3s*/
   transition-duration: calc(var(--base-time, 1) * 0.3s), 0s;
   transition-delay: 0s, 0s;
   transition-timing-function: ease, ease;
 }
 
-:not(.card__icon-button:hover) .is-liked .heart-body { /*кадр 2: 0.05s -- 0.35s*/
-  transition-duration: calc(var(--base-time, 1) * 0.3s), 0s;
-  transition-delay: calc(var(--base-time, 1) * 0.05s), 0s;
-  transition-timing-function: ease, ease;
-}
-
-.card__icon-button:hover .is-liked .heart-core { /*кадр 1: 0s -- 0.3s*/
+.card__icon-button:hover .is-liked .heart-core {
+  /*кадр 1: 0s -- 0.3s*/
   transition-duration: 0s, calc(var(--base-time, 1) * 0.3s);
   transition-delay: 0s, 0s;
   transition-timing-function: ease, ease;
 }
 
-.card__icon-button:hover .is-liked .heart-body { /*кадр 2: 0.05s -- 0.35s*/
+:not(.card__icon-button:hover) .is-liked .heart-body {
+  /*кадр 2: 0.05s -- 0.35s*/
+  transition-duration: calc(var(--base-time, 1) * 0.3s), 0s;
+  transition-delay: calc(var(--base-time, 1) * 0.05s), 0s;
+  transition-timing-function: ease, ease;
+}
+
+.card__icon-button:hover .is-liked .heart-body {
+  /*кадр 2: 0.05s -- 0.35s*/
   transition-duration: 0s, calc(var(--base-time, 1) * 0.3s);
   transition-delay: 0s, calc(var(--base-time, 1) * 0.05s);
   transition-timing-function: ease, ease;
 }
 
-.card__icon-button .like-icon.is-liked .heart-contour { /*кадр 3: 0s -- 0,1s*/
+.card__icon-button .like-icon.is-liked .heart-contour {
+  /*кадр 3: 0.06s -- 0,16s*/
   transition-duration: calc(var(--base-time, 1) * 0.1s);
-  transition-delay: 0s;
+  transition-delay: calc(var(--base-time, 1) * 0.06s);
+  transition-timing-function: ease;
 }
 
-.card__icon-button .is-liked .heart-contour,
-.card__icon-button .is-liked .heart-body,
-.card__icon-button .is-liked .heart-core { /*кадр 4: 0.1s -- 0.4s*/
-  animation: like-grow calc(var(--base-time, 1) * 0.3s / 2) 2 alternate calc(var(--base-time, 1) * 0.1s);
+.card__icon-button .is-liked .heart {
+  /*кадр 4: 0.1s -- 0.4s*/
+  animation: like-grow calc(var(--base-time, 1) * 0.3s / 2) 2 alternate
+    calc(var(--base-time, 1) * 0.1s) ease-in;
 }
 
-.card__icon-button .is-liked .heart-sparks { /*кадр 5: 0.2s -- 0.5s*/
-  animation: like-sparks calc(var(--base-time, 1) * 0.3s / 2) 2 alternate calc(var(--base-time, 1) * 0.1s);
+.card__icon-button .is-liked .heart-sparks {
+  /*кадр 5: 0.3s -- 0.6s*/
+  fill: var(--effect-color, #f00);
+  animation: like-sparks calc(var(--base-time, 1) * 0.3s / 2) 2 alternate
+    calc(var(--base-time, 1) * 0.3s) ease-in;
 }
 
 @keyframes like-grow {
   from {
-    scale: 100%;
+    transform: scale(1);
   }
 
   to {
-    scale: 150%;
+    transform: scale(1.25);
   }
 }
 
@@ -202,26 +229,73 @@
   }
 }
 
-.common-button:focus {
-  transition-property: translate, box-shadow;
-  transition-duration: calc(var(--base-time, 1s) * 0.3s), calc(var(--base-time, 1s) * 0.3s);
-}
-
-@supports selector(:focus-visible) {
-  .common-button:focus-visible {
-    transition-property: translate, box-shadow;
-    transition-duration: calc(var(--base-time, 1s) * 0.3s), calc(var(--base-time, 1s) * 0.3s);
-  }
+.common-button {
+  transform: translate(0, 0);
+  box-shadow: 0 0 0 0 var(--main-color, #000);
 }
 
 .common-button::after {
-  transition: scale calc(var(--base-time, 1) * 0.5s) ease-in-out;
+  transform: scale(0, 1);
+  transform-origin: 0;
+  transition: transform calc(var(--base-time, 1) * 0.5s) ease-in-out;
+}
+
+.common-button:hover::after {
+  transform: scale(1, 1);
+}
+
+.common-button:focus {
+  transition-property: transform, box-shadow;
+  transition-duration: calc(var(--base-time, 1) * 0.3s),
+    calc(var(--base-time, 1) * 0.3s);
+  transform: translate(-2px, -2px);
+  box-shadow: 2px 2px 0 0 var(--main-color, #000);
+}
+
+@supports selector(:focus-visible) {
+
+  .theme-menu__button:focus {
+    opacity: 1;
+  }
+
+  .theme-menu__button:focus::after {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  .theme-menu__button:focus-visible {
+    opacity: 0.6;
+  }
+
+  .theme-menu__button:focus-visible::after {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .card__icon-button:focus {
+    border-color: transparent;
+  }
+
+  .card__icon-button:focus-visible {
+    border-color: var(--main-color, #000);
+  }
+
+  .common-button:focus {
+    transform: translate(0);
+    box-shadow: none;
+  }
+
+  .common-button:focus-visible {
+    transition-property: transform, box-shadow;
+    transition-duration: calc(var(--base-time, 1) * 0.3s),
+      calc(var(--base-time, 1) * 0.3s);
+    transform: translate(-2px, -2px);
+    box-shadow: 2px 2px 0 0 var(--main-color, #000);
+  }
+
 }
 
 @media (prefers-reduced-motion: reduce) {
   :root {
     --base-time: 0;
   }
-
 }
-
