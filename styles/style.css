@@ -64,6 +64,22 @@
   font-weight: inherit;
 }
 
+.header__main-logo:focus {
+  outline: none;
+  text-decoration: underline;
+}
+
+@supports selector(:focus-visible) {
+  .header__main-logo:focus {
+    text-decoration: none;
+  }
+
+  .header__main-logo:focus-visible {
+    outline: none;
+    text-decoration: underline;
+  }
+}
+
 .header__title {
   display: block;
   padding-block-start: 20px;
@@ -431,7 +447,6 @@
 
 dialog[open] {
   margin-inline: max(17px, auto);
-
   display: grid;
   grid-template-rows: fit-content, fit-content;
   grid-template-columns: fit-content, min-content;
