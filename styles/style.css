@@ -66,11 +66,9 @@
 
 .header__main-logo:focus {
   outline: none;
-  text-decoration: underline;
 }
 
 .header__main-logo:focus-visible {
-  outline: none;
   text-decoration: underline;
 }
 
@@ -89,17 +87,15 @@
   inline-size: fit-content;
   margin: auto;
   text-align: start;
-}
-
-.theme-menu__item {
-  font-size: 14px;
+  font-size: var(--accent-font-size, 0.875rem);
+  line-height: normal;
 }
 
 .theme-menu__button {
   position: relative;
   inset-inline-start: 0.7em;
   inset-block-start: 0;
-  font-size: var(--accent-font-size, 0.875rem);
+  font-size: inherit;
   background-color: transparent;
   border: none;
   font-family: inherit;
@@ -107,7 +103,7 @@
   perspective: 100px;
   padding: 0;
   margin: 0;
-  line-height: normal;
+  line-height: inherit;
   color: currentColor;
 }
 

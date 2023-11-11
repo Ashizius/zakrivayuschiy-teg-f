@@ -39,7 +39,6 @@
 }
 
 .theme-menu__button:disabled::before {
-  opacity: 1;
   rotate: X 360deg;
   transition: opacity calc(var(--base-time, 1) * 0.3s) ease-out,
               rotate calc(var(--base-time, 1) * 0.3s) linear; /*добавил анимацию вращения при переключении, легко убрать*/
@@ -57,7 +56,7 @@
   }
 }
 
-.theme-menu__button:hover:not(:disabled){
+.theme-menu__button:hover:not(:disabled) {
   opacity: 0.6;
 }
 
@@ -216,7 +215,7 @@
   }
 
   to {
-    transform: scale(1.25);
+    transform: scale(1.5);
   }
 }
 
