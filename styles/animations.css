@@ -21,7 +21,6 @@
 
 .theme-menu__button::before {
   opacity: 0;
-  transform-origin: 0 calc(0.5em - 0.05rem);
 }
 
 .theme-menu__button::after {
@@ -35,13 +34,11 @@
 .theme-menu__button:disabled {
   opacity: 0.6;
   transition: opacity calc(var(--base-time, 1) * 0.3s);
-  rotate: X 0deg;
 }
 
 .theme-menu__button:disabled::before {
-  rotate: X 360deg;
-  transition: opacity calc(var(--base-time, 1) * 0.3s) ease-out,
-    rotate calc(var(--base-time, 1) * 0.3s) linear; /*добавил анимацию вращения при переключении, легко убрать*/
+  opacity: 1;
+  transition: opacity calc(var(--base-time, 1) * 0.3s) ease-out;
   animation: x-transition calc(var(--base-time, 1) * 0.5s) infinite ease-in-out;
   animation-direction: alternate;
 }
