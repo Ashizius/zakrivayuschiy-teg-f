@@ -185,35 +185,35 @@
   object-position: 96% center;
 }
 
-.content__image--calm {
+.filter-calm {
   filter: brightness(50%);
 }
 
-.content__image--old-school {
+.filter-old-school {
   filter: sepia(1);
 }
 
-.content__image--colorful {
+.filter-colorful {
   filter: saturate(3);
 }
 
-.content__image--new-vision {
+.filter-new-vision {
   filter: hue-rotate(180deg);
 }
 
-.content__image--negative {
+.filter-negative {
   filter: invert(65%);
 }
 
-.content__image--depressed {
+.filter-depressed {
   filter: grayscale(0.9);
 }
 
-.content__image--drunk-vision {
+.filter-drunk-vision {
   filter: blur(18px);
 }
 
-.content__image--crazy {
+.filter-crazy {
   filter: saturate(1.2) hue-rotate(50deg) contrast(5);
 }
 
@@ -332,7 +332,7 @@
   }
 }
 
-dialog {
+.dialog {
   grid-template-areas:
     'image title  '
     'button button';
@@ -351,11 +351,11 @@ dialog {
   text-transform: uppercase;
 }
 
-dialog[open] {
+.dialog[open] {
   display: grid;
 }
 
-dialog::backdrop {
+.dialog::backdrop {
   background-color: rgb(0 0 0 / 0.75);
 }
 
