@@ -41,7 +41,7 @@
 .theme-menu__button:disabled::before {
   rotate: X 360deg;
   transition: opacity calc(var(--base-time, 1) * 0.3s) ease-out,
-              rotate calc(var(--base-time, 1) * 0.3s) linear; /*добавил анимацию вращения при переключении, легко убрать*/
+    rotate calc(var(--base-time, 1) * 0.3s) linear; /*добавил анимацию вращения при переключении, легко убрать*/
   animation: x-transition calc(var(--base-time, 1) * 0.5s) infinite ease-in-out;
   animation-direction: alternate;
 }
